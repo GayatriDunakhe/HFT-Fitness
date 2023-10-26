@@ -1,11 +1,11 @@
-{% extends "user_base.html" %}
+{% extends "./dashboard/user_base.html" %}
 
 {% block mood_sleep %}
      <!-- Main content -->
      <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 profile-container">
         <h2>Sleep & Mood</h2>
 
-        <form method="POST" action="{{ url_for('mood_sleep') }}">
+        <form method="POST" action="{{ url_for('sleep_mood.mood_sleep') }}">
             {{ form.hidden_tag() }}
 
             <div class="row">

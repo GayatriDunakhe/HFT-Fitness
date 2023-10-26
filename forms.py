@@ -68,3 +68,17 @@ class BMRForm(FlaskForm):
     age = StringField('Age (years):', validators=[InputRequired()])
     gender = SelectField('Gender:', choices=[('male', 'Male'), ('female', 'Female')])
     submit = SubmitField('Calculate BMR')
+
+class ChangePasswordForm(FlaskForm):
+    email = StringField('Email', validators=[DataRequired(), Email(message="Invalid email address")])
+    old_password = PasswordField('Old Password', validators=[DataRequired()])
+    new_password = PasswordField('New Password', validators=[
+        DataRequired(),
+        Length(min=8),
+        Regexp(r'^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])',
+               message='Password must contain at least 8 characters, one uppercase, one lowercase, one special character, and one number.')
+    ])
+    confirm_new_password = PasswordField('Confirm New Password', validators=[
+        DataRequired(),
+        EqualTo('new_password', message='Passwords must match')
+    ])

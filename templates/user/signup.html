@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Page</title>
+    <title>SignUp Page</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
 
@@ -12,8 +12,8 @@
     <div class="container mt-5">
         <div class="row justify-content-center">
             <div class="col-md-6">
-                <div class="login-container">
-                    <h2>Login</h2>
+                <div class="signup-container">
+                    <h2>SignUp</h2>
                     {% with messages = get_flashed_messages(with_categories=true) %}
                     {% if messages %}
                         {% for category, message in messages %}
@@ -21,7 +21,7 @@
                         {% endfor %}
                     {% endif %}
                     {% endwith %}
-                    <form method="POST" action="{{ url_for('login') }}">
+                    <form method="POST" action="{{ url_for('auth.signup') }}">
                         {{ form.hidden_tag() }}
                         <div class="mb-3">
                             {{ form.email.label(class="form-label") }}
@@ -46,11 +46,21 @@
                             {% endif %}
                         </div>
                         <div class="mb-3">
-                            {{ form.submit(class="btn btn-primary", value="Login") }}
+                            {{ form.confirm_password.label(class="form-label") }}
+                            {{ form.confirm_password(class="form-control", placeholder="Confirm Password") }}
+                            {% if form.confirm_password.errors %}
+                                <ul class="errors">
+                                    {% for error in form.confirm_password.errors %}
+                                        <li>{{ error }}</li>
+                                    {% endfor %}
+                                </ul>
+                            {% endif %}
+                        </div>
+                        <div class="mb-3">
+                            {{ form.submit(class="btn btn-primary", value="SignUp") }}
                         </div>
                     </form>
-                    <p>Don't have an account? <a href="{{ url_for('signup') }}">Sign Up</a></p>
-                    <p>Forgot your password? <a href="#">Forgot Password</a></p>
+                    <p>Already have an account? <a href="{{ url_for('auth.login') }}">Login</a></p>
                 </div>
             </div>
         </div>

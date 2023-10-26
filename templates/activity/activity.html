@@ -1,4 +1,4 @@
-{% extends "user_base.html" %}
+{% extends "./dashboard/user_base.html" %}
 
 {% block activity %}
     <div class="container">
@@ -52,7 +52,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form method="POST" action="{{ url_for('activity') }}">
+                    <form method="POST" action="{{ url_for('activity.activity') }}">
                         {{ form.hidden_tag() }}
                     
                         <div class="form-group">

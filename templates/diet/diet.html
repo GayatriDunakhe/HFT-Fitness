@@ -1,4 +1,4 @@
-{% extends "user_base.html" %}
+{% extends "./dashboard/user_base.html" %}
 
 {% block diet %}
 <div class="container">
@@ -91,12 +91,12 @@
 
 
 <!-- Breakfast Modal -->
-{% include 'breakfast.html' %}
+{% include './diet/breakfast.html' %}
 
 <!-- Lunch Modal -->
-{% include 'lunch.html' %}
+{% include './diet/lunch.html' %}
 
 <!-- Dinner Modal -->
-{% include 'dinner.html' %}
+{% include './diet/dinner.html' %}
        
 {% endblock %}
