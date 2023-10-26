@@ -1,0 +1,110 @@
+/* Header styles */
+header {
+    background-color: #0e0c0c;
+    color: #fcf5f5;
+    padding: 15px;
+}
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.logo h1 {
+    font-size: 28px;
+    font-weight: bold;
+}
+.nav-links {
+    list-style: none;
+    display: flex;
+}
+.nav-links li {
+    margin-right: 20px;
+}
+.nav-links a {
+    color: #fcf5f5;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.nav-links a:hover{
+    color: #d00;
+}
+
+/* Hero section styles */
+.hero {
+    background-image: url("img/fitness.jpg");
+    background-size: cover;
+    background-position: center;
+    color: #fcf5fc;
+    text-align: center;
+    padding: 100px 0;
+    /* width: 100%; */
+}
+.hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+.hero-content p {
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+
+.cta-button {
+    display: inline-block;
+    background-color: #fff;
+    color: rgb(19, 18, 18);
+    padding: 15px 30px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+}
+.cta-button:hover {
+    background-color: #d00; 
+}
+
+/* about section */
+.about {
+    background-color:#fcf5f5;
+    padding: 50px 0;
+    text-align: center;
+    margin: 0 auto;
+}
+
+/* Features section styles */
+.features {
+    background-color: #fcf5f5;
+    padding: 100px 0;
+    text-align: center;
+}
+.features h2 {
+    font-size: 24px;
+    margin-bottom: 40px;
+}
+.feature {
+    margin-bottom: 30px;
+}
+.feature img {
+    width: 300px;
+    height: 300px;
+}
+.feature h3 {
+    font-size: 20px;
+    margin-top: 20px;
+}
+
+/* Exercise tips and workout*/
+.exercise-card {
+    margin-bottom: 30px;
+    padding: 20px;
+    border: 1px solid #fcf5f5;
+    border-radius: 5px;
+}
+.exercise-card img {
+    width: 100px;
+    height: 100px;
+}
+.exercise-card h3 {
+    font-size: 20px;
+    margin-top: 20px;
+}
+

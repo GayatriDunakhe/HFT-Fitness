@@ -1,0 +1,89 @@
+<!-- Dinner Modal -->
+<div class="modal fade" id="dinnerModal" tabindex="-1" role="dialog" aria-labelledby="dinnerModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="dinnerModalLabel">Dinner Menu</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="container">
+
+                    <!-- Add a search input field -->
+                    <form method="post" action="/food_search">
+                        <div class="form-group rounded-pill">
+                            <div class="input-group">
+                                <input type="text" name="foodSearch" class="form-control border-0 rounded-pill" placeholder="Search for food" aria-label="Search" aria-describedby="searchIcon">
+                                <div class="input-group-append">
+                                    <button class="btn btn-primary rounded-pill" type="submit" id="searchIcon">
+                                        <i class="fas fa-search"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>                    
+                    
+                    <div class="row gy-3 my-3">
+                        {% if matching_food_items %}
+                            {% for item in matching_food_items %}
+                                <div class="col-md-3">
+                                    <div class="card d-flex">
+                                        <!-- foodName, calories, carbohydrates, proteins, fats, descr, imageURL -->
+                                        <img src="{{ item[6] }}" class="card-img-top" alt="{{ item[0] }}">
+                                        <div class="card-body flex-column">
+                                            <h5 class="card-title">{{ item[0] }}</h5>
+                                            <p class="card-text">{{ item[5] }}</p>
+                                            <p class="card-text">Calories: <b>{{ item[1] }}</b></p>
+                                            <p class="card-text">Carbohydrates: <b>{{ item[2] }}</b></p>
+                                            <p class="card-text">Proteins: <b>{{ item[3] }}</b></p>
+                                            <p class="card-text">Fats: <b>{{ item[4] }}</b></p>
+                                            <form method="post" action="/add_to_diet_plan">
+                                                {{ form.csrf_token() }}
+                                                <input type="hidden" name="food_name" value="{{ item[0] }}">
+                                                <input type="hidden" name="calories" value="{{ item[1] }}">
+                                                <input type="hidden" name="day" value="today">
+                                                <button type="submit" class="btn btn-primary mt-auto">Take Today</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        {% else %}
+                            <div class="col-md-12">
+                                <p>Sorry, we haven't added this food.</p>
+                            </div>
+                        {% endif %}
+                    </div>
+
+                    <div class="row gy-3 my-3">
+                        {% for item in dinner_items %}
+                            <div class="col-md-3">
+                                <div class="card d-flex">
+                                    <!-- foodName, calories, carbohydrates, proteins, fats, descr, imageURL -->
+                                    <img src="{{ item[6] }}" class="card-img-top" alt="{{ item[0] }}">
+                                    <div class="card-body flex-column">
+                                        <h5 class="card-title">{{ item[0] }}</h5>
+                                        <p class="card-text">{{ item[5] }}</p>
+                                        <p class="card-text">Calories: <b>{{ item[1] }}</b></p>
+                                        <p class="card-text">Carbohydrates: <b>{{ item[2] }}</b></p>
+                                        <p class="card-text">Proteins: <b>{{ item[3] }}</b></p>
+                                        <p class="card-text">Fats: <b>{{ item[4] }}</b></p>
+                                        <form method="post" action="/add_to_diet_plan">
+                                            {{ form.csrf_token() }}
+                                            <input type="hidden" name="food_name" value="{{ item[0] }}">
+                                            <input type="hidden" name="calories" value="{{ item[1] }}">
+                                            <input type="hidden" name="day" value="today">
+                                            <button type="submit" class="btn btn-primary mt-auto">Take Today</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,102 @@
+{% extends "user_base.html" %}
+
+{% block diet %}
+<div class="container">
+    <!-- Diet Section -->
+    <section class="diet" id="diet">
+        <h1 class="heading">Diet Plan</h1>
+
+        <div class="card-deck">
+            <!-- All Tab -->
+            <!-- <div class="card text-center" style="padding: 20px;">
+                <img src="{{ url_for('static', filename='img/diet-1.png') }}" class="card-img-top mx-auto" alt="All" style="width: 4rem;">
+                <div class="card-body" style="cursor: pointer;">
+                    <a class="nav-link active" data-toggle="tab" href="#all">All</a>
+                </div>
+            </div> -->
+
+            <!-- Button to open the Breakfast Modal -->
+            <div class="card text-center" style="padding: 20px;">
+                <img src="{{ url_for('static', filename='img/diet-2.png') }}" class="card-img-top mx-auto" alt="Breakfast" style="width: 4rem;">
+                <div class="card-body" style="cursor: pointer;">
+                    <a class="nav-link" data-toggle="modal" data-target="#breakfastModal">Breakfast</a>
+                </div>
+            </div>
+
+            <!-- Button to open the Lunch Modal -->
+            <div class="card text-center" style="padding: 20px;">
+                <img src="{{ url_for('static', filename='img/diet-3.png') }}" class="card-img-top mx-auto" alt="Breakfast" style="width: 4rem;">
+                <div class="card-body" style="cursor: pointer;">
+                    <a class="nav-link" data-toggle="modal" data-target="#lunchModal">Lunch</a>
+                </div>
+            </div>
+
+            <!-- Button to open the Dinner Modal -->
+            <div class="card text-center" style="padding: 20px;">
+                <img src="{{ url_for('static', filename='img/diet-4.png') }}" class="card-img-top mx-auto" alt="Breakfast" style="width: 4rem;">
+                <div class="card-body" style="cursor: pointer;">
+                    <a class="nav-link" data-toggle="modal" data-target="#dinnerModal">Dinner</a>
+                </div>
+            </div>            
+        </div>
+    </section>    
+
+    <!-- Water Tracker Section -->
+    <section class="diet" id="water-tracker">
+        <h1 class="heading">Water Tracker</h1>
+
+        <div class="card-deck">
+            <!-- Water Tracker Tab -->
+            <div class="card text-center" style="padding: 20px;">
+                <img src="{{ url_for('static', filename='img/diet-1.png') }}" class="card-img-top mx-auto" alt="Water Tracker" style="width: 4rem;">
+                <div class="card-body">
+                    <a class="nav-link active" href="/drink_water">Stay Hydrated By Drinking Water</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <!-- BMR Calculator Form -->
+        <div class="container">
+            <h1 class="mt-4">BMR Calculator</h1>
+            <form method="POST" action="/calculate_bmr" class="mt-4">
+                {{ form.hidden_tag() }}
+                <div class="form-group">
+                    {{ form.weight.label(class="mt-2") }}
+                    {{ form.weight(class="form-control") }}
+                </div>
+                <div class="form-group">
+                    {{ form.height.label(class="mt-2") }}
+                    {{ form.height(class="form-control") }}
+                </div>
+                <div class="form-group">
+                    {{ form.age.label(class="mt-2") }}
+                    {{ form.age(class="form-control") }}
+                </div>
+                <div class="form-group">
+                    {{ form.gender.label(class="mt-2") }}
+                    {{ form.gender(class="form-control") }}
+                </div>
+                <button type="submit" class="btn btn-primary mt-4">Calculate BMR</button>
+            </form>
+            <div class="result mt-4">
+                <p>Your Basal Metabolic Rate (BMR) is: <span id="bmrResult" class="font-weight-bold text-primary">{{ bmr }} calories per day.</span></p>
+            </div>
+        </div>
+        
+        </div>        
+    </section>
+</div>
+
+
+<!-- Breakfast Modal -->
+{% include 'breakfast.html' %}
+
+<!-- Lunch Modal -->
+{% include 'lunch.html' %}
+
+<!-- Dinner Modal -->
+{% include 'dinner.html' %}
+       
+{% endblock %}

@@ -1,0 +1,71 @@
+{% extends "user_base.html" %}
+
+{% block dashboard %}
+    <div class="row">
+        <!-- Large Card at the Bottom (Centered) -->
+        <div class="col-md-12 mb-4">
+            <div class="card">
+                <!-- Calories... -->
+                <h1>{{ total_calories_burned }}  Calories burn Today</h1>
+            </div>
+        </div>
+
+        <!-- Activity -->
+        <div class="col-md-6 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h6 class="card-title">Total Activitys Today</h6>
+                    <h3 class="card-text">{{ total_activities }} Activity</h3>
+                </div>
+            </div>
+        </div>
+    
+        <!-- Diet Plans -->
+        <div class="col-md-6 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h6 class="card-title">Your Diet Plans</h6>
+                    {% if diet_items %}
+                    <h3 class="card-text">Total Calories: {{ total_food_calories }}</h3>
+                        <!-- List of Food Items -->
+                        <ul>
+                            {% for item in diet_items %}
+                                <li>
+                                    <strong>{{ item[0] }}</strong> - {{ item[1] }} calories
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    {% else %}
+                        <p>No diet plan added</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <!-- Mood -->
+        <div class="col-md-6 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h6 class="card-title">Your Current Mood</h6>
+                    <h3 class="card-text">
+                        {% if mood_data %}
+                            {{ mood_data[0] }}
+                        {% else %}
+                            <h5>Set Your Mood</h5>
+                        {% endif %}
+                    </h3>
+                </div>
+            </div>
+        </div>
+        <!-- Workout -->
+        <div class="col-md-6 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h6 class="card-title">Workout</h6>
+                    <h3 class="card-text">0</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+       
+{% endblock %}

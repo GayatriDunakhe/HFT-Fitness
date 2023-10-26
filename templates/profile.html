@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile - HFT</title>
+    <!-- Link to Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+</head>
+<body>
+    <!-- Horizontal Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="/dashboard">
+            <div class="logo">
+                <h1>HFT</h1>
+            </div>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/notification"><i class="fas fa-bell"></i> Notifications</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/profile">
+                        <img src="{{ url_for('static', filename='img/profile.png') }}" alt="User Profile" class="user-profile-pic" width="40px">
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        
+        <div class="row">
+            <!-- Sidebar -->
+            <nav class="col-md-3 col-lg-2 d-md-block sidebar profile-sidebar" style="background-color: black;">
+                <div class="position-sticky">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <img src="{{ url_for('static', filename='img/profile.png') }}" width="50%" alt="Profile Image" class="profile-image mx-auto d-block my-3">
+                        </li>
+                        <!-- <li class="nav-item">
+                            <a class="nav-link profile-nav-item active" href="#" >
+                                Profile
+                            </a>
+                        </li> -->
+                        <li class="nav-item">
+                            <a class="nav-link profile-nav-item change-password" href="#">
+                                Change Password
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link profile-nav-item logout" href="/logout">
+                                Logout
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            <!-- Main content -->
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 profile-container">
+                <h2>User Profile</h2>
+                <form method="POST" action="{{ url_for('profile') }}">
+                    {{ form.hidden_tag() }}  <!-- Include hidden fields for CSRF protection -->
+
+                    <div class="form-group">
+                        {{ form.name.label(class="control-label") }}
+                        {{ form.name(class="form-control", placeholder="Your Name") }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ form.email.label(class="control-label") }}
+                        {{ form.email(class="form-control", readonly=true) }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ form.gender.label(class="control-label") }}
+                        <select class="form-control" name="gender">
+                            <option value="male" {% if user_profile_data.gender == "male" %}selected{% endif %}>Male</option>
+                            <option value="female" {% if user_profile_data.gender == "female" %}selected{% endif %}>Female</option>
+                            <option value="other" {% if user_profile_data.gender == "other" %}selected{% endif %}>Other</option>
+                        </select>
+                    </div>                    
+
+                    <div class="form-group">
+                        {{ form.age.label(class="control-label") }}
+                        {{ form.age(class="form-control", placeholder="Your Age") }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ form.weight.label(class="control-label") }}
+                        {{ form.weight(class="form-control", placeholder="Your Weight") }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ form.height.label(class="control-label") }}
+                        {{ form.height(class="form-control", placeholder="Your Height") }}
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" style="background-color: black;"><b>Update Profile</b></button>
+                </form>
+            </main>
+        </div>
+    </div>
+    <!-- Link to Bootstrap JS and Popper.js (required for Bootstrap) -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

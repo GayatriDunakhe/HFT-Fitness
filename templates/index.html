@@ -1,9 +1,141 @@
 {% extends "base.html" %}
 
 {% block main %}
-    <h1>HFT-Fitness</h1>
-    <footer>
+    <div class="container">
+        <!-- Hero section -->
+        <section class="hero" style="background-image:url('static/img/fitness.jpg'); background-size: cover; background-position: center;">
+            <div class="hero-content text-light text-center">
+                <h1>Track Your Health and Fitness</h1>
+                <p>Stay fit, set goals, and achieve a healthier lifestyle with our tracker app.</p>
+                <a href="{{ url_for('signup') }}" class="btn btn-primary cta-button">Get Started</a>
+            </div>
+        </section>
+
+        <!-- About section -->
+        <section id="about" class="about bg-light p-5">
+            <div class="text-center">
+                <h1>About</h1>
+                <p>Health and fitness are crucial components of overall well-being. Maintaining a balanced diet, engaging in regular physical activity, managing stress levels, and ensuring adequate sleep are all essential for good health. A combination of cardiovascular exercises, strength training, flexibility exercises, and a nutritious diet can contribute to improved physical fitness and overall health.</p>
+            </div>
+        </section>
+
+        <!-- Features section -->
+        <section id="features" class="features bg-light p-5">
+            <h2 class="text-center">Features</h2>
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-md-4 mb-4">
+                        <div class="card">
+                            <img src="{{ url_for('static', filename='img/feature-icon-1.png') }}" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">Workouts</h5>
+                                <p class="card-text">Workout is a test of one's ability, capacity, stamina, or suitability.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="card">
+                            <img src="{{ url_for('static', filename='img/feature-icon-2.png') }}" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">Diet Plan</h5>
+                                <p class="card-text">A healthy diet is essential for good health and nutrition. Emphasizes vegetables, fruits, whole grains, and fat-free or low-fat dairy products and meats are protein.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="card">
+                            <img src="{{ url_for('static', filename='img/feature-icon-3.png') }}" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">Others</h5>
+                                <p class="card-text">A healthy and fit person is the one who can function well physically as well as mentally.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Exercise section -->
+        <section id="exercise" class="exercise bg-light p-5">
+            <h2 class="text-center">Exercise</h2>
+
+            <div class="Search-Box w-75 mb-3">
+                <form action="" class="search">
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="Search for anything" name="u">
+                        <button class="btn btn-primary" type="submit"><img src="./image/Search_Logo.png" width="50%"></button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-md-4 mb-4">
+                        <div class="card">
+                            <img src="{{ url_for('static', filename='img/exercise-icon-1.png') }}" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">Cardio Workouts</h5>
+                                <p class="card-text">Stay active with cardio exercises like running and cycling.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="card">
+                            <img src="{{ url_for('static', filename='img/exercise-icon-2.png') }}" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">Strength Training</h5>
+                                <p class="card-text">Build strength with weightlifting and bodyweight exercises.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="card">
+                            <img src="{{ url_for('static', filename='img/exercise-icon-3.png') }}" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">Yoga and Stretching</h5>
+                                <p class="card-text">Improve flexibility and relax with yoga and stretching routines.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tips section -->
+        <section id="tips" class="tips bg-light p-5">
+            <h2 class="text-center">Tips</h2>
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">HFT-Fitness</h5>
+                            <p class="card-text">Having good health is a synonym for being physically and mentally fit. We should not ignore our health and always stay alert in case we feel uneasy. We should exercise regularly to stay healthy. We should take care of our mental health by practicing meditation.</p>
+                            <a href="#" class="btn btn-primary">More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">HFT-Fitness</h5>
+                            <p class="card-text">Regular physical activity is one of the most important things you can do for your health. Being physically active can improve your brain health, help manage weight, reduce the risk of disease, strengthen bones and muscles, and improve your ability to do everyday activities.</p>
+                            <a href="#" class="btn btn-primary">More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <div class="card w-75 mb-3" style="text-align: center; margin-left: 15%;">
+            <div class="card-body">
+              <h5 class="card-title">CTA HFT-Fitness</h5>
+              <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+              <a href="#" class="btn btn-primary">Button</a>
+            </div>
+          </div>
+    </div>
+    <footer class="bg-dark text-light text-center p-3">
         <p>&copy; 2023 Health & Fitness Tracker</p>
     </footer>
 {% endblock %}
-
