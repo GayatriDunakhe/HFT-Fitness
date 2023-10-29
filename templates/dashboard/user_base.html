@@ -6,10 +6,11 @@
     <title>Dashboard</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato&display=swap">
 </head>
 <body>
     <!-- Horizontal Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href="/dashboard">
             <div class="logo">
                 <h1>HFT</h1>
@@ -21,7 +22,7 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="/notification"><i class="fas fa-bell"></i> Notifications</a>
+                    <a class="nav-link" href="/notification"><i class="fas fa-bell"></i> <b>Notifications</b></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/profile">
@@ -34,28 +35,28 @@
 
     <div class="container-fluid">
         <div class="row">
-            <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+            <nav class="col-md-2 d-md-block bg-dark sidebar" id="navbarNav">
                 <!-- Vertical Navbar content here... -->
                 <div class="position-sticky">
                     <ul class="nav flex-column">
                         <li class="nav-item">
-                            <a class="nav-link active" href="/dashboard">
-                                Home
+                            <a class="nav-link text-light active" href="/dashboard">
+                                <b>Home</b>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/activity">
-                                My Activity
+                            <a class="nav-link text-light" href="/activity">
+                                <b>My Activity</b>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/diet">
-                                My Diet
+                            <a class="nav-link text-light" href="/diet">
+                                <b>My Diet</b>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/mood_sleep">
-                                Sleepy and Mood
+                            <a class="nav-link text-light" href="/mood_sleep">
+                                <b>Sleepy and Mood</b>
                             </a>
                          </li>
                         <!--<li class="nav-item">
@@ -64,8 +65,8 @@
                             </a>
                         </li> -->
                         <li class="nav-item">
-                            <a class="nav-link" href="/logout">
-                                Logout
+                            <a class="nav-link text-danger" href="/logout">
+                               <b>Logout</b> 
                             </a>
                         </li>
                     </ul>
@@ -74,15 +75,27 @@
     
             <div class="col-md-10 mb-4">
                 <main>
+                    <br>
                     {% block dashboard %}{% endblock %}
                     {% block activity %}{% endblock %}
                     {% block diet %}{% endblock %}
                     {% block mood_sleep %}{% endblock %}
                     {% block profile %}{% endblock %}
+                    {% block change_pwd %}{% endblock %}
                 </main>
             </div>
         </div>
     </div>
+
+    <!-- JavaScript to handle the sidebar toggle using Bootstrap Collapse -->
+    <!-- <script>
+    $(document).ready(function () {
+        $("#sidebarToggle").click(function () {
+            $(".sidebar").toggleClass("d-md-block");
+        });
+    }); -->
+</script>
+    
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>

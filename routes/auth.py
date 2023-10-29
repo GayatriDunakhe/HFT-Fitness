@@ -48,8 +48,6 @@ def login():
 def logout():
     session.pop('user_id', None)
     return redirect(url_for('auth.login'))
-
- 
     
 @auth_bp.route('/change_password', methods=['GET', 'POST'])
 def change_password():
@@ -80,3 +78,44 @@ def change_password():
             flash('Password change failed. Please check your old password.', 'password_change_failed')
 
     return render_template('./user/change_password.html', form=form)
+
+# In-memory dictionary to simulate a user database
+# users = {
+#     'user@example.com': {
+#         'name': 'User',
+#         'password': 'userpassword'
+#     }
+# }
+
+# # Generate a unique token (in a real application, use a secure method)
+# def generate_reset_token(email):
+#     return email
+
+@auth_bp.route('/forgot_password', methods=['GET', 'POST'])
+def forgot_password():
+    if request.method == 'POST':
+        email = request.form['email']
+        if email in users:
+            token = generate_reset_token(email)
+            reset_link = url_for('reset_password', token=token, _external=True)
+            msg = Message('Reset Your Password', sender='your_email@example.com', recipients=[email])
+            msg.body = f'Click the following link to reset your password: {reset_link}'
+            mail.send(msg)
+            flash('Password reset link sent to your email.')
+            return redirect(url_for('auth.login'))
+        else:
+            flash('Invalid email address.')
+    return render_template('./user/forget_password.html')
+
+# Route for resetting password
+@auth_bp.route('/reset_password/<token>', methods=['GET', 'POST'])
+def reset_password(token):
+    if request.method == 'POST':
+        email = generate_reset_token(request.form['email'])
+        if email in users:
+            users[email]['password'] = request.form['new_password']
+            flash('Password reset successfully. You can now log in with your new password.')
+            return redirect(url_for('auth.login'))
+        else:
+            flash('Invalid email address.')
+    return render_template('./user/reset_password.html')

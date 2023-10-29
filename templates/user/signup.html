@@ -27,7 +27,7 @@
                             {{ form.email.label(class="form-label") }}
                             {{ form.email(class="form-control", placeholder="Email") }}
                             {% if form.email.errors %}
-                                <ul class="errors">
+                                <ul class="text-danger">
                                     {% for error in form.email.errors %}
                                         <li>{{ error }}</li>
                                     {% endfor %}
@@ -38,7 +38,7 @@
                             {{ form.password.label(class="form-label") }}
                             {{ form.password(class="form-control", placeholder="Password") }}
                             {% if form.password.errors %}
-                                <ul class="errors">
+                                <ul class="text-danger">
                                     {% for error in form.password.errors %}
                                         <li>{{ error }}</li>
                                     {% endfor %}
@@ -49,7 +49,7 @@
                             {{ form.confirm_password.label(class="form-label") }}
                             {{ form.confirm_password(class="form-control", placeholder="Confirm Password") }}
                             {% if form.confirm_password.errors %}
-                                <ul class="errors">
+                                <ul class="text-danger">
                                     {% for error in form.confirm_password.errors %}
                                         <li>{{ error }}</li>
                                     {% endfor %}
@@ -57,10 +57,10 @@
                             {% endif %}
                         </div>
                         <div class="mb-3">
-                            {{ form.submit(class="btn btn-primary", value="SignUp") }}
+                            {{ form.submit(class="btn btn-danger", value="SignUp") }}
                         </div>
                     </form>
-                    <p>Already have an account? <a href="{{ url_for('auth.login') }}">Login</a></p>
+                    <p>Already have an account? <a href="{{ url_for('auth.login') }}"  class="text-danger">Login</a></p>
                 </div>
             </div>
         </div>

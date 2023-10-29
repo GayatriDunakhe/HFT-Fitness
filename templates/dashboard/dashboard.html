@@ -62,7 +62,13 @@
             <div class="card">
                 <div class="card-body">
                     <h6 class="card-title">Sleep Hours</h6>
-                    <h3 class="card-text">0</h3>
+                    <h3 class="card-text">
+                        {% if sleep_data %}
+                            {{ sleep_data[0][5] }}
+                        {% else %}
+                            <h5>0 Hours</h5>
+                        {% endif %}
+                    </h3>
                 </div>
             </div>
         </div>

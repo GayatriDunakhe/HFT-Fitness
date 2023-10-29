@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, flash, redirect, url_for, request, session
-from models import get_total_activities, get_total_calories, get_user_diet_items, calculate_total_food_calories, fetch_mood_data
+from models import get_total_activities, get_total_calories, get_user_diet_items, calculate_total_food_calories, fetch_mood_data, fetch_sleep_data
 
 dashboard_bp = Blueprint('dashboard', __name__)
 
@@ -18,6 +18,9 @@ def dashboard():
         # Get the user current mood
         mood_data = fetch_mood_data(user_id)
 
+        # Get the sleep data
+        sleep_data = fetch_sleep_data(user_id)
+
         # Get the diet plans with total calories
         total_food_calories = calculate_total_food_calories(user_id)
         diet_items = get_user_diet_items(user_id)
@@ -25,7 +28,7 @@ def dashboard():
         if total_calories_burned is None:
             total_calories_burned = 0
 
-        return render_template('./dashboard/dashboard.html', total_activities=total_activities, total_calories_burned=total_calories_burned, mood_data=mood_data, total_food_calories=total_food_calories, diet_items=diet_items)
+        return render_template('./dashboard/dashboard.html', total_activities=total_activities, total_calories_burned=total_calories_burned, mood_data=mood_data, total_food_calories=total_food_calories, diet_items=diet_items, sleep_data=sleep_data)
 
     else:
         return redirect(url_for('auth.login'))  # Redirect to login page if user is not logged in

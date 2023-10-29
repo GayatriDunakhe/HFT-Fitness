@@ -17,7 +17,7 @@
                     {% with messages = get_flashed_messages(with_categories=true) %}
                     {% if messages %}
                         {% for category, message in messages %}
-                            <div class="{{ category }}">{{ message }}</div>
+                            <div class="text-danger {{ category }}">{{ message }}</div>
                         {% endfor %}
                     {% endif %}
                     {% endwith %}
@@ -27,7 +27,7 @@
                             {{ form.email.label(class="form-label") }}
                             {{ form.email(class="form-control", placeholder="Email") }}
                             {% if form.email.errors %}
-                                <ul class="errors">
+                                <ul class="text-danger">
                                     {% for error in form.email.errors %}
                                         <li>{{ error }}</li>
                                     {% endfor %}
@@ -38,7 +38,7 @@
                             {{ form.password.label(class="form-label") }}
                             {{ form.password(class="form-control", placeholder="Password") }}
                             {% if form.password.errors %}
-                                <ul class="errors">
+                                <ul class="text-danger">
                                     {% for error in form.password.errors %}
                                         <li>{{ error }}</li>
                                     {% endfor %}
@@ -46,11 +46,11 @@
                             {% endif %}
                         </div>
                         <div class="mb-3">
-                            {{ form.submit(class="btn btn-primary", value="Login") }}
+                            {{ form.submit(class="btn btn-danger", value="Login") }}
                         </div>
                     </form>
-                    <p>Don't have an account? <a href="{{ url_for('auth.signup') }}">Sign Up</a></p>
-                    <p>Forgot your password? <a href="#">Forgot Password</a></p>
+                    <p>Don't have an account? <a href="{{ url_for('auth.signup') }}" class="text-danger">Sign Up</a></p>
+                    <p>Forgot your password? <a href="{{ url_for('auth.forgot_password') }}"  class="text-danger">Forgot Password</a></p>
                 </div>
             </div>
         </div>

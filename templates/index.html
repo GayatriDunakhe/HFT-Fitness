@@ -7,7 +7,7 @@
             <div class="hero-content text-light text-center">
                 <h1>Track Your Health and Fitness</h1>
                 <p>Stay fit, set goals, and achieve a healthier lifestyle with our tracker app.</p>
-                <a href="{{ url_for('auth.signup') }}" class="btn btn-primary cta-button">Get Started</a>
+                <a href="{{ url_for('auth.signup') }}" class="btn btn-danger">Get Started</a>
             </div>
         </section>
 
@@ -59,20 +59,20 @@
         <section id="exercise" class="exercise bg-light p-5">
             <h2 class="text-center">Exercise</h2>
 
-            <div class="Search-Box w-75 mb-3">
+            <!-- <div class="Search-Box w-75 mb-3">
                 <form action="" class="search">
                     <div class="input-group mb-3">
                         <input type="text" class="form-control" placeholder="Search for anything" name="u">
-                        <button class="btn btn-primary" type="submit"><img src="./image/Search_Logo.png" width="50%"></button>
+                        <button class="btnbtn-danger" type="submit"><img src="./image/Search_Logo.png" width="50%"></button>
                     </div>
                 </form>
-            </div>
+            </div> -->
 
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-md-4 mb-4">
                         <div class="card">
-                            <img src="{{ url_for('static', filename='img/exercise-icon-1.png') }}" class="card-img-top" alt="...">
+                            <img src="{{ url_for('static', filename='img/R.jpg') }}" class="card-img-top" alt="...">
                             <div class="card-body">
                                 <h5 class="card-title">Cardio Workouts</h5>
                                 <p class="card-text">Stay active with cardio exercises like running and cycling.</p>
@@ -110,7 +110,7 @@
                         <div class="card-body">
                             <h5 class="card-title">HFT-Fitness</h5>
                             <p class="card-text">Having good health is a synonym for being physically and mentally fit. We should not ignore our health and always stay alert in case we feel uneasy. We should exercise regularly to stay healthy. We should take care of our mental health by practicing meditation.</p>
-                            <a href="#" class="btn btn-primary">More</a>
+                            <a href="#" class="btn btn-danger">More</a>
                         </div>
                     </div>
                 </div>
@@ -118,8 +118,8 @@
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">HFT-Fitness</h5>
-                            <p class="card-text">Regular physical activity is one of the most important things you can do for your health. Being physically active can improve your brain health, help manage weight, reduce the risk of disease, strengthen bones and muscles, and improve your ability to do everyday activities.</p>
-                            <a href="#" class="btn btn-primary">More</a>
+                            <p class="card-text">Regular physical activity is one of the most important things you can do for your health. Being physically active can improve your brain health, help manage weight, reduce the risk of disease, strengthen bones and muscles</p>
+                            <a href="#" class="btn btn-danger">More</a>
                         </div>
                     </div>
                 </div>
@@ -129,9 +129,9 @@
         <!-- CTA -->
         <div class="card w-75 mb-3" style="text-align: center; margin-left: 15%;">
             <div class="card-body">
-              <h5 class="card-title">CTA HFT-Fitness</h5>
-              <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-              <a href="#" class="btn btn-primary">Button</a>
+              <h3 class="card-title">Transform Your Life with HFT-Fitness</h3>
+              <br>
+              <a href="{{ url_for('auth.signup') }}" class="btn btn-danger">Get Started</a>
             </div>
           </div>
     </div>
